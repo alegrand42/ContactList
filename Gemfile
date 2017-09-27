@@ -34,6 +34,9 @@ gem 'devise'
 # Stylesheet
 gem 'bootstrap-sass', '~> 3.3.7'
 
+# Picture loader
+gem 'paperclip', '~> 5.1.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

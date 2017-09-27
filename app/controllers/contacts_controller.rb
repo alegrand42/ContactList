@@ -52,7 +52,7 @@ class ContactsController < ApplicationController
 	private
 
 	def contact_params
-		p = params.require(:contact).permit(:name, :email)
+		p = params.require(:contact).permit(:name, :email, :image)
 		name = p[:name].downcase
 		p[:name] = p[:name].capitalize
 		return p

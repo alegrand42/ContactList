@@ -19,6 +19,13 @@
 						<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 					</div>
 				</div>
+				<div class="form-group">
+					<label for="InputName">Image</label>
+					<div class="input-group">
+						<%= f.file_field :image, :class => "btn btn-default" %>
+						<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+					</div>
+				</div>
 				<%= f.submit "Create", :class => 'btn btn-primary' %>
 			<% end %>
 

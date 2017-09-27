@@ -12,9 +12,8 @@ This web app stores contacts for each user.
 * System dependencies
 
 * Database creation
-```rake db:migrate
-```
+`rake db:migrate`
+
 
 * Database initialization
-```bundle install
-```
+`bundle install`
