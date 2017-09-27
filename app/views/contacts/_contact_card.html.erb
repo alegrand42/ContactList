@@ -1,0 +1,12 @@
+<div class="card" style="width: 20rem;">
+	<!--%= image_tag upload.image.url , class: 'responsive-img' %-->
+	<div class="card-block">
+		<h2 class="card-title">Name: <%= contact.name %></h2>
+		<h4 class="card-title">Email: <%= contact.email %></h4>
+		<%= button_to "Libray", repertory_path,
+		      :class => "inbox-sf-add-btn tip", :method => :get %>
+
+	</div>
+</div>
+
+

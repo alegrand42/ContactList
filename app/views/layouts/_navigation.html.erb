@@ -1,0 +1,46 @@
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+<div class="navbar navbar-default navbar-static-top bg-dark" role="navigation">
+	<div class="container">
+		<div>
+			<form class="navbar-search" action=<%= root_path %>>
+				<!--input type="text" class="search-query span3" placeholder="search"-->
+				<input id="search" type="search" name="search" value="<%= @keyword %>" required>
+				<label class="labelbold" for="search"><i class="material-icons">search</i></label>
+			</form>
+		</div>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<!--a class="navbar-brand main-logo pull-left" href="">Contact</a-->
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<div class="container">
+					<div class="row">
+						<div class="col"><%= link_to raw('Home'), root_path %></a>
+						</div>
+						<div class="col"><%= link_to raw('New Contact'), contacts_path %></a>
+						</div>
+						<div class="col"><%= link_to raw('Repertory'), repertory_path %></a>
+						</div>
+						<div class="col"><%= link_to raw('Help'), static_pages_help_path %></a>
+						</div>
+						<% if user_signed_in? %>
+							<div class="col"><%= link_to raw('Log Out'), destroy_user_session_path, method: "delete" %></div>
+						<% else %>
+							<div class="col"><%= link_to raw('Log In'), new_user_session_path, method: "delete" %></div>
+						<% end %>
+					</div>
+				</div>
+			</ul>
+		</div><!--/.nav-collapse -->
+	</div>
+</div>

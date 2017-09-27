@@ -1,0 +1,24 @@
+<div class="center jumbotron">
+	<h1>Welcome to the Sample App</h1>
+
+	<h2>
+		This is the home page for the
+		<a href="http://rubyonrails.org/">Ruby on Rails Tutorial</a>
+		sample application.
+	</h2>
+	<% if user_signed_in? %>
+		<%= current_user.email %><br/>
+		<%= current_user.last_sign_in_at.strftime("%d %b. %Y") %></div>
+	<% else %>
+		<div class="card">
+			<div class="card-content">
+				<div class="labelbold">You are not Logged in</div>
+				<div>
+					<%= link_to "Log in", new_user_session_path, class: "btn btn-lg btn-primary" %>
+					<%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+
+</div>
