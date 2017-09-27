@@ -4,12 +4,14 @@ class ContactsController < ApplicationController
 
 	# GET /contacts
 	def index
-		@contact = Contact.new
+		#@contact = Contact.new
+		@contact = current_user.contacts.new
 	end
 
 	# POST /contacts
 	def create
-		@contact = Contact.new(contact_params)
+		#@contact = Contact.new(contact_params)
+		@contact = current_user.contacts.new(contact_params)
 		@contact.user_id = current_user.id
 		if @contact.save
 			redirect_to @contact

@@ -4,7 +4,7 @@ class Contact < ApplicationRecord
 	validates :user_id, presence: true
 	validates :email, presence: true
 
-	belongs_to :user
+	belongs_to :user, optional: true
 
 	if ENV["CONTACTS_PATH"]
 		has_attached_file :image,  :path => "#{ENV["CONTACTS_PATH"]}/:year/:month/:day/:id/image/:filename", styles: { thumb: "120x120>" }, :url => "#{ENV["CONTACTS_PATH"]}/:year/:month/:day/:id/image/:filename", default_url: "/images/:style/missing.png"
