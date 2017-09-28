@@ -1,9 +1,10 @@
 
 <div class="col-lg-4 col-sm-6 text-center mb-4">
           <%= image_tag contact.image.url , class: 'rounded-circle img-fluid d-block mx-auto', :size => '200x200' %>
-          <h3><%= contact.name %></h3>
+          <h3><%= contact.name %>
+          </h3>
           <p><%= link_to "/contacts/#{contact.id}", 
 			            class: "btn btn-success align-center" do %>
-			<i class="glyphicon glyphicon-user"></i> Dashboard
+			<i class="glyphicon glyphicon-user"></i> Profile
 <% end %></p>
 </div>

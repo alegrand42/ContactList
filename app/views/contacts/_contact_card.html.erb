@@ -1,12 +1,22 @@
-<div class="card" style="width: 20rem;">
-	<%= image_tag contact.image.url , class: 'responsive-img', :size => '260x180' %>
-	<div class="card-block">
-		<h2 class="card-title">Name: <%= contact.name %></h2>
-		<h4 class="card-title">Email: <%= contact.email %></h4>
-		<%= button_to "Repertory", repertory_path,
-		      :class => "inbox-sf-add-btn tip", :method => :get %>
+<div class="col-sm-3">
+	<canvas id="header-blur" class="header-bg" wuth="250" height="70"></canvas>
+	<div class="avatar"><%= image_tag contact.image.url , class: 'rounded-circle img-fluid d-block mx-auto', :size => '260x180' %></div>
+	<div class="content">
+	<div class="row">
+	<div class="col-md-6 col-md-offset-3"><h2><i class="glyphicon glyphicon-user"></i> <%= contact.name %></h2></div>
+	</div>
+	
+	<div class="row">
+	<div class="col-md-6 col-md-offset-3"><h4><i class="glyphicon glyphicon-envelope"></i> <%= contact.email %></h4></div>
+	</div>
+	
+	<div class="row">
+	<div class="col-md-6 col-md-offset-3"><h4><%= link_to repertory_path, 
+			            class: "inbox-sf-add-btn tip" do %>
+			<i class="glyphicon glyphicon-th"></i> Repertory<% end %></h4>
+	</div></div>
+	</div>
+	
 
 	</div>
 </div>
-
-
