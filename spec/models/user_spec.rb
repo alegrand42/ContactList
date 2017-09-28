@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	subject {User.new}
+
+	it "is not valid without a name" do
+		expect(subject).not_to be_valid
+	end
 end

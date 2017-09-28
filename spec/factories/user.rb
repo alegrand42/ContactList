@@ -1,8 +1,7 @@
 FactoryGirl.define do
-	factory :todo do
+	factory :user do
 		name { Faker::Name.name }
 		email { Faker::Internet.email}
-		user_id { Faker::Number.number(10) }
-		association :user
+		password 'foobar'
 	end
 end

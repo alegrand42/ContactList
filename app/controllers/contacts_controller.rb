@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
 	#before_filter :authenticate_user!
-	before_action :set_contact, only: [:show, :update, :destroy]
+	#before_action :set_contact, only: [:show, :update, :destroy]
 
 	# GET /contacts
 	def index
@@ -16,29 +16,34 @@ class ContactsController < ApplicationController
 		if @contact.save
 			redirect_to @contact
 		else
-			redirect_to '#home'
+			redirect_to 'show'
 		end
 	end
 
 	# GET /contacts/:id
 	def show
+		if current_user.id == Contact.find(params[:id]).user_id
+			@contact = Contact.find(params[:id])
+		else
+			redirect_to '#home'
+		end
 	end
 
 	def search
+=begin
 		#@contacts = Contact.all
 		@contacts = current_user.contacts.all
-=begin
+=end
 		@keyword = ''
 		if params[:search] and /^[\w ]+$/.match(params[:search])
 			@keyword = params[:search]
 		end
-		@con = Contact.search(title: @keyword).order("created_at DESC")
-		#@con = current_user.contacts.search(title: @keyword).order("created_at DESC")
-		@contactss = []
+		#@con = Contact.search(title: @keyword).order("created_at DESC")
+		@con = current_user.contacts.search(name: @keyword).order("created_at DESC")
+		@contacts = []
 		@con.each do |u|
 			@contacts.push(u)
 		end
-=end
 	end
 
 	# PUT /contacts/:id

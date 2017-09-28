@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	devise_for :users
-	resources :contacts
+	resources :contacts, only: [:index, :create, :destroy, :search, :show]
 	
 	get 'static_pages/home'
 	get 'static_pages/help'

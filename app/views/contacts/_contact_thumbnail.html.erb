@@ -1,7 +1,9 @@
-<div class="col-lg-3 col-md-4 col-xs-6">
-	<a href="#" class="d-block mb-4 h-100">
-		<h2 class="card-title">Name: <%= contact.name %></h2>
-		<%= image_tag contact.image.url , class: 'responsive-img' %>
-	</a>
-</div>
 
+<div class="col-lg-4 col-sm-6 text-center mb-4">
+          <%= image_tag contact.image.url , class: 'rounded-circle img-fluid d-block mx-auto', :size => '200x200' %>
+          <h3><%= contact.name %></h3>
+          <p><%= link_to "/contacts/#{contact.id}", 
+			            class: "btn btn-success align-center" do %>
+			<i class="glyphicon glyphicon-user"></i> Dashboard
+<% end %></p>
+</div>
