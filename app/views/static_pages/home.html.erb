@@ -11,12 +11,15 @@
 		<%= current_user.last_sign_in_at.strftime("%d %b. %Y") %></div>
 	<% else %>
 		<div class="card">
-			<div class="card-content">
-				<div class="labelbold">You are not Logged in</div>
-				<div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-5">You are not Logged in</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-5">
 					<%= link_to "Log in", new_user_session_path, class: "btn btn-lg btn-primary" %>
 					<%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-primary" %>
 				</div>
+			
 			</div>
 		</div>
 	<% end %>

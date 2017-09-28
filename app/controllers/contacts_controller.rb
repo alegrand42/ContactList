@@ -5,7 +5,11 @@ class ContactsController < ApplicationController
 	# GET /contacts
 	def index
 		#@contact = Contact.new
-		@contact = current_user.contacts.new
+		if current_user
+			@contact = current_user.contacts.new
+		else
+			redirect_to '#home'
+		end
 	end
 
 	# POST /contacts
@@ -46,9 +50,21 @@ class ContactsController < ApplicationController
 		end
 	end
 
-	# PUT /contacts/:id
+	def edit
+		#if @contact.user_id == current_user.id
+			@contact = Contact.find(params[:id])
+		#else
+		#	redirect_to '#home'
+		#end
+	end
+
 	def update
-		@contact.update(contact_params)
+		@contact = Contact.find(params[:id])
+		if @contact.update_attributes(update_params)
+			redirect_to @contact
+		else
+			render 'edit'
+		end
 	end
 
 	# DELETE /contacts/:id
@@ -59,10 +75,15 @@ class ContactsController < ApplicationController
 	private
 
 	def contact_params
-		p = params.require(:contact).permit(:name, :email, :image)
+		p = params.require(:contact).permit(:name, :email, :image, :user_id)
 		name = p[:name].downcase
 		p[:name] = p[:name].capitalize
 		return p
+	end
+
+	def update_params
+		m = params.require(:contact).permit(:name, :email, :image, :user_id)
+		return m
 	end
 
 	def set_contact

@@ -1,22 +1,35 @@
-<div class="col-sm-3">
-	<canvas id="header-blur" class="header-bg" wuth="250" height="70"></canvas>
-	<div class="avatar"><%= image_tag contact.image.url , class: 'rounded-circle img-fluid d-block mx-auto', :size => '260x180' %></div>
+<div class="center jumbotron">
+	<canvas id="header-blur" class="header-bg" wuth="250" height="70">
+	</canvas>
+	<div class="avatar">
+		<%= image_tag contact.image.url , class: 'rounded-circle img-fluid d-block mx-auto', :size => '260x180' %>
+	</div>
+	<br>
 	<div class="content">
-	<div class="row">
-	<div class="col-md-6 col-md-offset-3"><h2><i class="glyphicon glyphicon-user"></i> <%= contact.name %></h2></div>
-	</div>
-	
-	<div class="row">
-	<div class="col-md-6 col-md-offset-3"><h4><i class="glyphicon glyphicon-envelope"></i> <%= contact.email %></h4></div>
-	</div>
-	
-	<div class="row">
-	<div class="col-md-6 col-md-offset-3"><h4><%= link_to repertory_path, 
-			            class: "inbox-sf-add-btn tip" do %>
-			<i class="glyphicon glyphicon-th"></i> Repertory<% end %></h4>
-	</div></div>
-	</div>
-	
+		<div class="row">
+			<div class="col-md-6 col-md-offset-5"><h2><i class="glyphicon glyphicon-user"></i> <%= contact.name %></h2></div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-md-offset-5"><h4><i class="glyphicon glyphicon-envelope"></i> <%= contact.email %></h4></div>
+		</div>
 
+		<div class="row">
+			<div class="col-md-3 col-md-offset-5"><h4><%= link_to "/contacts/#{contact.id}/edit", 
+								:method=> :get, class: "inbox-sf-add-btn tip" do %>
+					<i class="glyphicon glyphicon-folder-open"></i> Update<% end %></h4>
+			</div>
+			<div class="col-md-9 col-md-offset-5"><h4><%= link_to "/contacts/#{contact.id}", 
+								:method=> :delete, class: "inbox-sf-add-btn tip", data: { confirm: "Are you sure you want to delete this contact?"} do %>
+					<i class="glyphicon glyphicon-trash"></i> Destroy<% end %></h4>
+			</div>
+		</div>
+				
+		<div class="row">
+			<div class="col-md-6 col-md-offset-5"><h4><%= link_to repertory_path, 
+								class: "inbox-sf-add-btn tip" do %>
+					<i class="glyphicon glyphicon-th"></i> Repertory<% end %></h4>
+			</div>
+		</div>
 	</div>
 </div>

@@ -1,0 +1,43 @@
+<%= form_for contact do |f| %>
+  <% if contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this study from being saved:</h2>
+
+      <ul>
+      <% contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, list: 'name-list' %>
+    <datalist id="name-list">
+      <% Contact.select(:name).distinct.each() do |n| %>
+      <option value="<%= n.name %>"><%= n.name %></option>
+      <% end %>
+    </datalist>
+  </div>
+
+	<div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, list: 'email-list' %>
+    <datalist id="email-list">
+      <% Contact.select(:email).distinct.each() do |n| %>
+      <option value="<%= n.email %>"><%= n.email %></option>
+      <% end %>
+    </datalist>
+  </div>
+
+
+  <div class="row">
+    <div class="col s6">
+      <div>
+	  <%= f.submit "Update", :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+  
+  <% end %>
