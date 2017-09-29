@@ -24,6 +24,12 @@
 					<i class="glyphicon glyphicon-trash"></i> Destroy<% end %></h4>
 			</div>
 		</div>
+		
+		<div class="row">
+		<div class="col-md-3 col-md-offset-5">
+			Tags: <%= raw contact.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') %>
+		</div>
+		</div>
 				
 		<div class="row">
 			<div class="col-md-6 col-md-offset-5"><h4><%= link_to repertory_path, 

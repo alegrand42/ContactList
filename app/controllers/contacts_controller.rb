@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-	#before_filter :authenticate_user!
+	before_action :authenticate_user!
 	#before_action :set_contact, only: [:show, :update, :destroy]
 
 	# GET /contacts
@@ -59,11 +59,11 @@ class ContactsController < ApplicationController
 	end
 
 	def edit
-		#if @contact.user_id == current_user.id
+		if current_user&.id == Contact.find(params[:id]).user_id
 			@contact = Contact.find(params[:id])
-		#else
-		#	redirect_to '#home'
-		#end
+		else
+			redirect_to '#home'
+		end
 	end
 
 	def update
@@ -77,7 +77,13 @@ class ContactsController < ApplicationController
 
 	# DELETE /contacts/:id
 	def destroy
-		@contact.destroy
+		if current_user&.id == Contact.find(params[:id]).user_id
+			@contact = Contact.find(params[:id])
+			@contact.destroy
+			redirect_to '#home'
+		else
+			redirect_to '#home'
+		end
 	end
 
 	private
