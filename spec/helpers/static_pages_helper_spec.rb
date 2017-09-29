@@ -11,10 +11,4 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe StaticPagesHelper, type: :helper do
-	it "should have the h1 'Welcome to the Contact App'" do
-		visit '/static_pages/home'
-		within '#content' do
-			expect(find('h1')).to have_content('Welcome to the Contact App')	
-		end	
-	end
 end
