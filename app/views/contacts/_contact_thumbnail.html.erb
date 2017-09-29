@@ -2,6 +2,7 @@
 <div class="col-lg-4 col-sm-6 text-center mb-4">
           <%= image_tag contact.image.url , class: 'rounded-circle img-fluid d-block mx-auto', :size => '200x200' %>
           <h3><%= contact.name %>
+	  <h3>Tags: <%= raw contact.tag_list.map { |t| link_to t, tag_path(t)}.join(', ') %>
           </h3>
           <p><%= link_to "/contacts/#{contact.id}", 
 			            class: "btn btn-success align-center" do %>

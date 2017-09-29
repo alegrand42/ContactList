@@ -31,6 +31,15 @@
     </datalist>
   </div>
 
+	<div class="field">
+    <%= f.label :tag_list, "Tags (separated by commas)" %>
+    <%= f.text_field :tag_list, list: 'tag-list' %>
+    <datalist id="tag-list">
+      <% Contact.select(:tag_list).distinct.each() do |n| %>
+      <option value="<%= n.tag_list %>"><%= n.tag_list %></option>
+      <% end %>
+    </datalist>
+  </div>
 
   <div class="row">
     <div class="col s6">

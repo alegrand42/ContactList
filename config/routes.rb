@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	get 'tags/:tag', to: 'contacts#search', as: :tag
 	devise_for :users
 	resources :contacts, only: [:index, :create, :destroy, :search, :show, :update, :edit]
 	

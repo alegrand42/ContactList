@@ -43,7 +43,15 @@ class ContactsController < ApplicationController
 			@keyword = params[:search]
 		end
 		#@con = Contact.search(title: @keyword).order("created_at DESC")
-		@con = current_user.contacts.search(name: @keyword).order("created_at DESC")
+		if params[:tag]
+			@con = []
+			@con0 = current_user.contacts.search(name: @keyword).order("created_at DESC")
+			@con0.each do |c|
+				@con.push(c) if c.tag_list.include?(params[:tag])
+			end
+		else
+			@con = current_user.contacts.search(name: @keyword).order("created_at DESC")
+		end
 		@contacts = []
 		@con.each do |u|
 			@contacts.push(u)
@@ -75,14 +83,14 @@ class ContactsController < ApplicationController
 	private
 
 	def contact_params
-		p = params.require(:contact).permit(:name, :email, :image, :user_id)
+		p = params.require(:contact).permit(:name, :email, :image, :user_id, :tag_list)
 		name = p[:name].downcase
 		p[:name] = p[:name].capitalize
 		return p
 	end
 
 	def update_params
-		m = params.require(:contact).permit(:name, :email, :image, :user_id)
+		m = params.require(:contact).permit(:name, :email, :image, :user_id, :tag_list)
 		return m
 	end
 
